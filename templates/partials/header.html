@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="container">
+    <div class="nav-brand">
+      <a href="/" class="logo">HN Clone</a>
+    </div>
+    <nav class="nav">
+
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link active">About</a>
+      {{if .IsAuthenticated}}
+      <a href="/submit" class="nav-link">Submit</a>
+      <a href="/logout" class="nav-link">Logout</a>
+      {{else}}
+      <a href="/login" class="nav-link">Login</a>
+      <a href="/register" class="nav-link">Register</a>
+      {{end}}
+      <a href="/contact" class="nav-link">Contact</a>
+
+    </nav>
+  </div>
+</header>

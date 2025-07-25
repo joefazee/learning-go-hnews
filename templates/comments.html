@@ -1,0 +1,38 @@
+{{define "content"}}
+<div class="container">
+
+    <div class="post-item">
+        <div class="post-content">
+            <div class="post-title">
+                <a href="{{.Post.URL}}" class="post-link" target="_blank">{{.Post.Title}}</a>
+                <span class="post-domain">{{.Post.Host}}</span>
+
+                <a href="#" class="post-link">{{.Post.UserName}}</a>
+            </div>
+            <div class="post-meta">
+                <a href="/vote?post_id={{.Post.ID}}" class="author"> <span class="points">{{.Post.GetVoteCountsHuman}}</span></a>|
+                <span class="time">{{.Post.CreatedAtHuman}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="comment-list">
+        {{with .Comments}}
+        {{range .}}
+        <div class="comment-item">
+            {{.Body}}
+        </div>
+        {{end}}
+        {{end}}
+    </div>
+    
+    <div class="comment-form">
+        <form action="/comments?post_id={{.Post.ID}}" method="post">
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" cols="5" rows="3" placeholder="Add comment"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+{{end}}
